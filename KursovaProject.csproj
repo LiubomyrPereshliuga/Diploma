@@ -21,7 +21,6 @@
     <None Include="Views\Shared\HeaderPartial.cshtml" />
     <None Include="Views\Shared\MetatagsPartial.cshtml" />
     <None Include="Views\Shared\ScriptsPartial.cshtml" />
-    <None Include="Views\Shared\SidebarPartial.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\_ViewImports.cshtml" />
     <None Include="Views\_ViewStart.cshtml" />
