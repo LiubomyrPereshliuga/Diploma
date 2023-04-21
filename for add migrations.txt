@@ -1,0 +1,2 @@
+dotnet tool install --global dotnet-ef  || install tools for dotnet
+dotnet ef migrations add Initial        || generate new migration
