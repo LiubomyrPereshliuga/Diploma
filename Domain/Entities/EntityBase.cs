@@ -8,12 +8,14 @@ namespace MyCompany.Domain.Entities
         protected EntityBase() => DateAdded = DateTime.UtcNow;
 
         [Required]
-        public Guid Id { get;set; }
+        public Guid Id { get; set; }
 
         [Display(Name = "Назва")]
         public virtual string Title { get; set; }
-        [Display(Name ="Магазин")]
+        [Display(Name = "Магазин")]
         public virtual string Shop { get; set; }
+        [Display(Name = "Категорія")]
+        public virtual string Category { get; set; }
         [Display(Name ="Ціна")]
         public virtual string Price { get; set; }
 
