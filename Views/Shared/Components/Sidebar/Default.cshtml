@@ -1,27 +1,51 @@
 ﻿@model IQueryable<ServiceItem>
-
-@if (Model?.Any() == true)
-{
+<div id="sidebar">
     <section>
-        <h2>Наші товари</h2>
-        <ul class="small-image-list">
-            @foreach (ServiceItem entity in Model)
-            {
-                <li>
-                    <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                        <img src="~/images/@entity.TitleImagePath" alt="" class="left" />
-                    </a>
-                    <h4>
-                        @entity.Title
-                    </h4>
-                    <p>
-                        Магазин: @entity.Shop, ціна: @entity.Price
-                    </p>
-                    <p>
-                        @entity.Subtitle
-                    </p>
-                </li>
-            }
-        </ul>
+        <header class="major">
+            <h2>Гід</h2>
+        </header>
+        <p>
+            На цій вкладці Ви зможете оглядати товари, та в майбутньому тут можливо буде пошук та фільтри
+        </p>
+        <footer>
+            <a href="#" class="button icon solid fa-info-circle">Дізнатись більше</a>
+        </footer>
     </section>
-}
+
+    <section>
+        @if (Model?.Any() == true)
+        {
+            int i = 0;
+            <section>
+                <header class="major">
+                    <h2>Топ-3 товарів</h2>
+                </header>
+                <ul class="small-image-list">
+                    @foreach (ServiceItem entity in Model)
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
+                                <img src="~/images/@entity.TitleImagePath" alt="" class="left" style="width: 200px; height:200px;"/>
+                            </a>
+                            <h4>
+                                @entity.Title
+                            </h4>
+                            <p>
+                                Магазин: @entity.Shop, ціна: @entity.Price
+                            </p>
+                            <p>
+                                @entity.Subtitle
+                            </p>
+                        </li>
+                        i++;
+                        @if (i == 3) break;
+                    }
+                </ul>
+            </section>
+        }
+        <footer>
+            <a href="#" class="button icon solid fa-arrow-circle-right">Довідка</a>
+        </footer>
+    </section>
+
+</div>

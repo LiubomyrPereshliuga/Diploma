@@ -7,15 +7,15 @@
     ViewBag.Keywords = textField.MetaKeywords;
 }
 
-<div>
+<div style="display: flex; flex-wrap: wrap;">
     @if (Model.Any())
     {
-        <ul class="big-image-list">
+        <ul class="big-image-list" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
             @foreach (ServiceItem entity in Model)
             {
                 <li>
                     <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                        <img src="~/images/@entity.TitleImagePath" alt="" class="left" />
+                        <img src="~/images/@entity.TitleImagePath" alt="" class="left" style="width: 350px; height: 350px" />
                     </a>
                     <h4>@entity.Title</h4>
                     <p>Магазин з цим товаром: @entity.Shop</p>
