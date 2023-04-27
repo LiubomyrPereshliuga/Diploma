@@ -205,7 +205,7 @@ Other Changes:
 
 Fixed Issues:
 
-* [#2571](https://github.com/ckeditor/ckeditor4/issues/2571): Fixed: Clicking the categories in the [Emoji](https://ckeditor.com/cke4/addon/emoji) dropdown panel scrolls the entire page.
+* [#2571](https://github.com/ckeditor/ckeditor4/issues/2571): Fixed: Clicking the CategoryItems in the [Emoji](https://ckeditor.com/cke4/addon/emoji) dropdown panel scrolls the entire page.
 
 ## CKEditor 4.11
 

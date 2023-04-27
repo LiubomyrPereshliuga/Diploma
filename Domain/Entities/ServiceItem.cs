@@ -10,7 +10,7 @@ namespace MyCompany.Domain.Entities
         [Required(ErrorMessage ="Заповність назву магазину")]
         [Display(Name = "Магазин")]
         public override string Shop { get; set; }
-        [Required(ErrorMessage = "Заповність назву категорії")]
+        [Required(ErrorMessage = "Виберіть категорію")]
         [Display(Name = "Категорія")]
         public override string Category { get; set; }
         [Required(ErrorMessage = "Заповність ціну товару")]

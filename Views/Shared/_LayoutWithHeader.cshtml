@@ -1,0 +1,37 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    @await Html.PartialAsync("MetatagsPartial")
+    @await Html.PartialAsync("CssPartial")
+</head>
+    <body class="left-sidebar is-preload">
+        <div id="page-wrapper">
+            @await Html.PartialAsync("HeaderPartial")
+        </div>
+        <div id="main-wrapper">
+            <div class="wrapper style2">
+                <div class="inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4 col-12-medium">
+                                <div id="sidebar">
+                                    @await Html.PartialAsync("SidebarPartial")
+                                </div>
+                            </div>
+                                <div class="col-8 col-12-medium imp-medium">
+                                    <div id="content">
+                                        @RenderBody()
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer-wrapper">
+                @await Html.PartialAsync("FooterPartial")
+            </div>
+    @await Html.PartialAsync("ScriptsPartial")
+</body>
+</html>

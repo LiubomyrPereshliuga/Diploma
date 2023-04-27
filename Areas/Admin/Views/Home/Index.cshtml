@@ -1,9 +1,9 @@
-﻿@model IQueryable<ServiceItem>
+﻿@using KursovaProject.Areas.Admin;
+@model ViewModel
 @{
     string strTitle = "Панель адміністратора";
     ViewBag.Title = strTitle;
 }
-
 <div>
     <h2>@strTitle</h2>
     <div>
@@ -11,10 +11,10 @@
         <div class="div-box">
             <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="">Додати</a>
         </div>
-        @if (Model.Any())
+        @if (Model.services.Any())
         {
             <div>
-                @foreach (ServiceItem entity in Model)
+                @foreach (ServiceItem entity in Model.services)
                 {
                     <div>
                         <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="@entity.Id">Редагувати</a>
@@ -32,10 +32,37 @@
             </div>
         }
     </div>
+    <div>
+        <h3>Категорії</h3>
+        <div class="div-box">
+            <a asp-area="Admin" asp-controller="CategoryItems" asp-action="Edit" asp-route-id="">Додати</a>
+        </div>
+        @if (Model.categorys.Any())
+        {
+            <div>
+                @foreach (CategoryItem entity in Model.categorys)
+                {
+                    <div>
+                        <a asp-area="Admin" asp-controller="CategoryItems" asp-action="Edit" asp-route-id="@entity.Id">Редагувати</a>
+                        |
+                        <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="CategoryItems" asp-action="Delete" method="post">
+                            <input type="hidden" name="id" value="@entity.Id">
+                            <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">Видалити</a>
+                        </form>
+                        |
+                        <a asp-area="" asp-controller="Categorys" asp-action="Index" asp-route-id="@entity.Id">
+                            @($"{entity.Category}")
+                        </a>
+                    </div>
+                }
+            </div>
+        }
+    </div>
     <div class="div-box">
         <h3>Редагування сторінки сайту</h3>
         <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageIndex">Головна</a>
         <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageServices">Каталог</a>
+        <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageCategoryItems">Категорії</a>
         <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageContacts">Контакти</a>
     </div>
     <div class="div-box">

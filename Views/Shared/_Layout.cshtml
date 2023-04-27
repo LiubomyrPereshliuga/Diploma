@@ -5,33 +5,46 @@
     @await Html.PartialAsync("MetatagsPartial")
     @await Html.PartialAsync("CssPartial")
 </head>
-    <body class="left-sidebar is-preload">
-        <div id="page-wrapper">
-            @await Html.PartialAsync("HeaderPartial")
+<body class="left-sidebar is-preload">
+    <header id="header">
+        <div class="inner">
+            <!-- Logo -->
+            <h1><a asp-area="" asp-controller="Home" asp-action="Index" id="logo">Довідник покупця</a></h1>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Головна</a></li>
+                    <li><a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="">Каталог</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="CategoryItems" asp-route-id="">Категорії</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contacts">Контакти</a></li>
+                </ul>
+            </nav>
         </div>
-        <div id="main-wrapper">
-            <div class="wrapper style2">
-                <div class="inner">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-4 col-12-medium">
-                                <div id="sidebar">
-                                    @await Html.PartialAsync("SidebarPartial")
-                                </div>
+    </header>
+    <div id="main-wrapper">
+        <div class="wrapper style2">
+            <div class="inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4 col-12-medium">
+                            <div id="sidebar">
+                                @await Html.PartialAsync("SidebarPartial")
                             </div>
-                                <div class="col-8 col-12-medium imp-medium">
-                                    <div id="content">
-                                        @RenderBody()
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-8 col-12-medium imp-medium">
+                            <div id="content">
+                                @RenderBody()
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="footer-wrapper">
-                @await Html.PartialAsync("FooterPartial")
-            </div>
+        </div>
+    </div>
+    <div id="footer-wrapper">
+        @await Html.PartialAsync("FooterPartial")
+    </div>
     @await Html.PartialAsync("ScriptsPartial")
 </body>
 </html>

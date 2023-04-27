@@ -21,5 +21,11 @@ namespace MyCompany.Controllers
         {
             return View(dataManager.TextFields.GetTextFieldByCodeWord("PageContacts"));
         }
+
+        public IActionResult CategoryItems()
+        {
+            ViewBag.TextField = dataManager.TextFields.GetTextFieldByCodeWord("PageCategoryItems");
+            return View(dataManager.CategoryItems.GetCategoryItems());
+        }
     }
 }

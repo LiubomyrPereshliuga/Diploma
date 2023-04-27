@@ -49,7 +49,7 @@ namespace KursovaProject.Migrations
                         new
                         {
                             Id = "44546e06-8719-4ad8-b88a-f271ae9d6eab",
-                            ConcurrencyStamp = "ed532f0c-5050-480b-b466-58d5764e3ec6",
+                            ConcurrencyStamp = "5b44a697-d959-40e9-afa9-22877582a172",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,13 +148,13 @@ namespace KursovaProject.Migrations
                         {
                             Id = "3b62472e-4f66-49fa-a20f-e7685b9565d8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2c55a293-1874-4ac4-a92f-5e1360e922ea",
+                            ConcurrencyStamp = "aacee200-fbac-45c4-bee6-011377356dee",
                             Email = "my@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MY@EMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAED5j+QOl+sJhueCRlFf3GnxxSx34kYRuhyL8t07IavgmCpt2WTvhp2dKf+8KjqB3LA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEQsfgPRR3AnFg2LnDD4R+ZNoCN/OZ1/qeNa7HuxWfgE8Y7fXyOdiGIdIg+TQdzDSg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -249,6 +249,54 @@ namespace KursovaProject.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("MyCompany.Domain.Entities.CategoryItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CategoryDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MetaDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaKeywords")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Price")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Shop")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subtitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CategoryItems");
+                });
+
             modelBuilder.Entity("MyCompany.Domain.Entities.ServiceItem", b =>
                 {
                     b.Property<Guid>("Id")
@@ -257,6 +305,9 @@ namespace KursovaProject.Migrations
 
                     b.Property<string>("Category")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CategoryDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
@@ -306,6 +357,9 @@ namespace KursovaProject.Migrations
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CategoryDescription")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CodeWord")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -349,7 +403,7 @@ namespace KursovaProject.Migrations
                         {
                             Id = new Guid("63dc8fa6-07ae-4391-8916-e057f71239ce"),
                             CodeWord = "PageIndex",
-                            DateAdded = new DateTime(2023, 4, 22, 17, 17, 0, 103, DateTimeKind.Utc).AddTicks(9745),
+                            DateAdded = new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(802),
                             Text = "Все заповнюється адміном",
                             Title = "Головна"
                         },
@@ -357,7 +411,7 @@ namespace KursovaProject.Migrations
                         {
                             Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a277f"),
                             CodeWord = "PageServices",
-                            DateAdded = new DateTime(2023, 4, 22, 17, 17, 0, 104, DateTimeKind.Utc).AddTicks(8672),
+                            DateAdded = new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(3783),
                             Text = "Все заповнюється адміном",
                             Title = "Каталог"
                         },
@@ -365,15 +419,23 @@ namespace KursovaProject.Migrations
                         {
                             Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a277a"),
                             CodeWord = "PageShops",
-                            DateAdded = new DateTime(2023, 4, 22, 17, 17, 0, 104, DateTimeKind.Utc).AddTicks(9120),
+                            DateAdded = new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(3898),
                             Text = "Все заповнюється адміном",
                             Title = "Магазини"
                         },
                         new
                         {
+                            Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a278b"),
+                            CodeWord = "PageCategoryItems",
+                            DateAdded = new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(3940),
+                            Text = "Все заповнюється адміном",
+                            Title = "Категорії"
+                        },
+                        new
+                        {
                             Id = new Guid("4aa76a4c-c59d-409a-84c1-06e6487a137a"),
                             CodeWord = "PageContacts",
-                            DateAdded = new DateTime(2023, 4, 22, 17, 17, 0, 104, DateTimeKind.Utc).AddTicks(9177),
+                            DateAdded = new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(3976),
                             Text = "Все заповнюється адміном",
                             Title = "Контакти"
                         });

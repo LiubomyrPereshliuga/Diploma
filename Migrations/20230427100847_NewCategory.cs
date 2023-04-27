@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KursovaProject.Migrations
 {
-    public partial class CategoryAdd : Migration
+    public partial class NewCategory : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,10 +47,34 @@ namespace KursovaProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CategoryItems",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Title = table.Column<string>(nullable: true),
+                    Shop = table.Column<string>(nullable: true),
+                    Price = table.Column<string>(nullable: true),
+                    Subtitle = table.Column<string>(nullable: true),
+                    Text = table.Column<string>(nullable: true),
+                    TitleImagePath = table.Column<string>(nullable: true),
+                    MetaTitle = table.Column<string>(nullable: true),
+                    MetaDescription = table.Column<string>(nullable: true),
+                    MetaKeywords = table.Column<string>(nullable: true),
+                    DateAdded = table.Column<DateTime>(nullable: false),
+                    Category = table.Column<string>(nullable: false),
+                    CategoryDescription = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CategoryItems", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ServiceItems",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
+                    CategoryDescription = table.Column<string>(nullable: true),
                     TitleImagePath = table.Column<string>(nullable: true),
                     MetaTitle = table.Column<string>(nullable: true),
                     MetaDescription = table.Column<string>(nullable: true),
@@ -73,8 +97,9 @@ namespace KursovaProject.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Shop = table.Column<string>(nullable: true),
                     Category = table.Column<string>(nullable: true),
+                    CategoryDescription = table.Column<string>(nullable: true),
+                    Shop = table.Column<string>(nullable: true),
                     Price = table.Column<string>(nullable: true),
                     Subtitle = table.Column<string>(nullable: true),
                     TitleImagePath = table.Column<string>(nullable: true),
@@ -200,22 +225,23 @@ namespace KursovaProject.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "44546e06-8719-4ad8-b88a-f271ae9d6eab", "ed532f0c-5050-480b-b466-58d5764e3ec6", "admin", "ADMIN" });
+                values: new object[] { "44546e06-8719-4ad8-b88a-f271ae9d6eab", "5b44a697-d959-40e9-afa9-22877582a172", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "3b62472e-4f66-49fa-a20f-e7685b9565d8", 0, "2c55a293-1874-4ac4-a92f-5e1360e922ea", "my@email.com", true, false, null, "MY@EMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAED5j+QOl+sJhueCRlFf3GnxxSx34kYRuhyL8t07IavgmCpt2WTvhp2dKf+8KjqB3LA==", null, false, "", false, "admin" });
+                values: new object[] { "3b62472e-4f66-49fa-a20f-e7685b9565d8", 0, "aacee200-fbac-45c4-bee6-011377356dee", "my@email.com", true, false, null, "MY@EMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEEQsfgPRR3AnFg2LnDD4R+ZNoCN/OZ1/qeNa7HuxWfgE8Y7fXyOdiGIdIg+TQdzDSg==", null, false, "", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "TextFields",
-                columns: new[] { "Id", "Category", "CodeWord", "DateAdded", "MetaDescription", "MetaKeywords", "MetaTitle", "Price", "Shop", "Subtitle", "Text", "Title", "TitleImagePath" },
+                columns: new[] { "Id", "Category", "CategoryDescription", "CodeWord", "DateAdded", "MetaDescription", "MetaKeywords", "MetaTitle", "Price", "Shop", "Subtitle", "Text", "Title", "TitleImagePath" },
                 values: new object[,]
                 {
-                    { new Guid("63dc8fa6-07ae-4391-8916-e057f71239ce"), null, "PageIndex", new DateTime(2023, 4, 22, 17, 17, 0, 103, DateTimeKind.Utc).AddTicks(9745), null, null, null, null, null, null, "Все заповнюється адміном", "Головна", null },
-                    { new Guid("70bf165a-700a-4156-91c0-e83fce0a277f"), null, "PageServices", new DateTime(2023, 4, 22, 17, 17, 0, 104, DateTimeKind.Utc).AddTicks(8672), null, null, null, null, null, null, "Все заповнюється адміном", "Каталог", null },
-                    { new Guid("70bf165a-700a-4156-91c0-e83fce0a277a"), null, "PageShops", new DateTime(2023, 4, 22, 17, 17, 0, 104, DateTimeKind.Utc).AddTicks(9120), null, null, null, null, null, null, "Все заповнюється адміном", "Магазини", null },
-                    { new Guid("4aa76a4c-c59d-409a-84c1-06e6487a137a"), null, "PageContacts", new DateTime(2023, 4, 22, 17, 17, 0, 104, DateTimeKind.Utc).AddTicks(9177), null, null, null, null, null, null, "Все заповнюється адміном", "Контакти", null }
+                    { new Guid("63dc8fa6-07ae-4391-8916-e057f71239ce"), null, null, "PageIndex", new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(802), null, null, null, null, null, null, "Все заповнюється адміном", "Головна", null },
+                    { new Guid("70bf165a-700a-4156-91c0-e83fce0a277f"), null, null, "PageServices", new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(3783), null, null, null, null, null, null, "Все заповнюється адміном", "Каталог", null },
+                    { new Guid("70bf165a-700a-4156-91c0-e83fce0a277a"), null, null, "PageShops", new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(3898), null, null, null, null, null, null, "Все заповнюється адміном", "Магазини", null },
+                    { new Guid("70bf165a-700a-4156-91c0-e83fce0a278b"), null, null, "PageCategoryItems", new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(3940), null, null, null, null, null, null, "Все заповнюється адміном", "Категорії", null },
+                    { new Guid("4aa76a4c-c59d-409a-84c1-06e6487a137a"), null, null, "PageContacts", new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(3976), null, null, null, null, null, null, "Все заповнюється адміном", "Контакти", null }
                 });
 
             migrationBuilder.InsertData(
@@ -279,6 +305,9 @@ namespace KursovaProject.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "CategoryItems");
 
             migrationBuilder.DropTable(
                 name: "ServiceItems");

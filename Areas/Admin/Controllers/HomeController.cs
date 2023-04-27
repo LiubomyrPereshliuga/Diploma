@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using KursovaProject.Areas.Admin;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyCompany.Domain;
+using MyCompany.Models;
+using System.Linq;
 
 namespace MyCompany.Areas.Admin.Controllers
 {
@@ -15,7 +19,10 @@ namespace MyCompany.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View(dataManager.ServiceItems.GetServiceItems());
+            ViewModel mymodel = new ViewModel();
+            mymodel.services = dataManager.ServiceItems.GetServiceItems();
+            mymodel.categorys = dataManager.CategoryItems.GetCategoryItems();
+            return View(mymodel);
         }
     }
 }

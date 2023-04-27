@@ -26,6 +26,7 @@ namespace MyCompany
             //подключаем нужный функционал приложения в качестве сервисов
             services.AddTransient<ITextFieldsRepository, EFTextFieldsRepository>();
             services.AddTransient<IServiceItemsRepository, EFServiceItemsRepository>();
+            services.AddTransient<ICategoryItemsRepository, EFCategoryItemsRepository>();
             services.AddTransient<DataManager>();
 
             //подключаем контекст БД
