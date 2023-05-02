@@ -1,11 +1,27 @@
-﻿@model TextField
+﻿@model IQueryable<ShopItem>
 @{
-    ViewBag.Title = Model.MetaTitle;
-    ViewBag.Description = Model.MetaDescription;
-    ViewBag.Keywords = Model.MetaKeywords;
+    TextField textField = ViewBag.TextField;
+
+    ViewBag.Title = textField.MetaTitle;
+    ViewBag.Description = textField.MetaDescription;
+    ViewBag.Keywords = textField.MetaKeywords;
     Layout = "_LayoutWithHeader";
 }
 
-<div>
-    @Html.Raw(Model.Text)
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh;">
+    @if (Model.Any())
+    {
+        <ul class="big-image-list" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            @foreach (ShopItem entity in Model)
+            {
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="@entity.Id">
+                        <img src="~/images/@entity.TitleImagePath" alt="" class="left" style="width: 350px; height: 350px" />
+                    </a>
+                    <h4>@entity.Title</h4>
+                    <p>@entity.Description</p>
+                </li>
+            }
+        </ul>
+    }
 </div>

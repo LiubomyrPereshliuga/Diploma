@@ -1,0 +1,39 @@
+﻿@using KursovaProject.Models;
+@model ShopViewModel
+@{
+    ViewBag.Title = Model.shop.MetaTitle;
+    ViewBag.Description = Model.shop.MetaDescription;
+    ViewBag.Keywords = Model.shop.MetaKeywords;
+}
+
+<div>
+    <h2>
+        @Model.shop.Title
+    </h2>
+    <div>
+        <img class="img-block" src="~/images/@Model.shop.TitleImagePath" />
+    </div>
+</div>
+<h2>Товари з цим магазином:</h2>
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh;">
+    @if (Model.services.Any())
+    {
+        <ul class="big-image-list" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            @foreach (ServiceItem entity in Model.services)
+            {
+                @if (entity.ShopItem == Model.shop.Title)
+                {
+                <li>
+                    <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
+                        <img src="~/images/@entity.TitleImagePath" alt="" class="left" style="width: 350px; height: 350px" />
+                    </a>
+                    <h4>@entity.Title</h4>
+                    <p>Категорія: @entity.CategoryItem</p>
+                    <p>Короткий опис: @entity.Subtitle</p>
+                    <p>Ціна: @entity.Price</p>
+                </li>
+                    }
+                }
+        </ul>
+    }
+</div>

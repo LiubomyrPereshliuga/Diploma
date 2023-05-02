@@ -13,6 +13,7 @@ namespace MyCompany.Domain
         public DbSet<TextField> TextFields { get; set; }
         public DbSet<ServiceItem> ServiceItems { get; set; }
         public DbSet<CategoryItem> CategoryItems { get; set; }
+        public DbSet<ShopItem> ShopItems { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -53,12 +54,6 @@ namespace MyCompany.Domain
                 Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a277f"), 
                 CodeWord = "PageServices", 
                 Title = "Каталог"
-            });
-            modelBuilder.Entity<TextField>().HasData(new TextField
-            {
-                Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a277a"),
-                CodeWord = "PageShops",
-                Title = "Магазини"
             });
             modelBuilder.Entity<TextField>().HasData(new TextField
             {

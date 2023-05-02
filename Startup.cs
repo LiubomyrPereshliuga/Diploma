@@ -27,6 +27,7 @@ namespace MyCompany
             services.AddTransient<ITextFieldsRepository, EFTextFieldsRepository>();
             services.AddTransient<IServiceItemsRepository, EFServiceItemsRepository>();
             services.AddTransient<ICategoryItemsRepository, EFCategoryItemsRepository>();
+            services.AddTransient<IShopItemsRepository, EFShopItemsRepository>();
             services.AddTransient<DataManager>();
 
             //подключаем контекст БД

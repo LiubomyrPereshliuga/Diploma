@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using KursovaProject.Models;
+using Microsoft.AspNetCore.Mvc;
 using MyCompany.Domain;
 
 namespace MyCompany.Controllers
@@ -12,11 +14,6 @@ namespace MyCompany.Controllers
             this.dataManager = dataManager;
         }
 
-        public IActionResult Index()
-        {
-            return View(dataManager.TextFields.GetTextFieldByCodeWord("PageIndex"));
-        }
-
         public IActionResult Contacts()
         {
             return View(dataManager.TextFields.GetTextFieldByCodeWord("PageContacts"));
@@ -26,6 +23,19 @@ namespace MyCompany.Controllers
         {
             ViewBag.TextField = dataManager.TextFields.GetTextFieldByCodeWord("PageCategoryItems");
             return View(dataManager.CategoryItems.GetCategoryItems());
+        }
+        public IActionResult Index(Guid id)
+        {
+            if (id != default)
+            {
+                ShopViewModel mymodel = new ShopViewModel();
+                mymodel.services = dataManager.ServiceItems.GetServiceItems();
+                mymodel.categories = dataManager.CategoryItems.GetCategoryItems();
+                mymodel.shop = dataManager.ShopItems.GetShopItemById(id);
+                return View("ShopShow", mymodel);
+            }
+            ViewBag.TextField = dataManager.TextFields.GetTextFieldByCodeWord("PageIndex");
+            return View(dataManager.ShopItems.GetShopItems());
         }
     }
 }

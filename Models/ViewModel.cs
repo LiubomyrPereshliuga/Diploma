@@ -10,6 +10,7 @@ namespace KursovaProject.Areas.Admin
     public class ViewModel
     {
         public IQueryable<ServiceItem> services { get; set; }
-        public IQueryable<CategoryItem> categorys { get; set; }
+        public IQueryable<CategoryItem> categories { get; set; }
+        public IQueryable<ShopItem> shops { get; set; }
     }
 }

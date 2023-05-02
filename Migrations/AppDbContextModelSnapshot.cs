@@ -49,7 +49,7 @@ namespace KursovaProject.Migrations
                         new
                         {
                             Id = "44546e06-8719-4ad8-b88a-f271ae9d6eab",
-                            ConcurrencyStamp = "5b44a697-d959-40e9-afa9-22877582a172",
+                            ConcurrencyStamp = "cac1df0c-a6d3-49a0-b4ea-fb6d80da3aa2",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,13 +148,13 @@ namespace KursovaProject.Migrations
                         {
                             Id = "3b62472e-4f66-49fa-a20f-e7685b9565d8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "aacee200-fbac-45c4-bee6-011377356dee",
+                            ConcurrencyStamp = "dc77bac7-3fe6-4e88-953e-7e33a7d8489f",
                             Email = "my@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MY@EMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEQsfgPRR3AnFg2LnDD4R+ZNoCN/OZ1/qeNa7HuxWfgE8Y7fXyOdiGIdIg+TQdzDSg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOqICak01iyk6s05C6VL+dzBksZj7WESKWrA/cM4hURqW56bO18BUqtFgI+DwWMJYg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -255,15 +255,11 @@ namespace KursovaProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CategoryDescription")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MetaDescription")
                         .HasColumnType("nvarchar(max)");
@@ -274,12 +270,6 @@ namespace KursovaProject.Migrations
                     b.Property<string>("MetaTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Price")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Shop")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Subtitle")
                         .HasColumnType("nvarchar(max)");
 
@@ -287,6 +277,7 @@ namespace KursovaProject.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TitleImagePath")
@@ -303,15 +294,15 @@ namespace KursovaProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Category")
+                    b.Property<string>("CategoryItem")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CategoryDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MetaDescription")
                         .HasColumnType("nvarchar(max)");
@@ -326,7 +317,7 @@ namespace KursovaProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Shop")
+                    b.Property<string>("ShopItem")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -348,24 +339,20 @@ namespace KursovaProject.Migrations
                     b.ToTable("ServiceItems");
                 });
 
-            modelBuilder.Entity("MyCompany.Domain.Entities.TextField", b =>
+            modelBuilder.Entity("MyCompany.Domain.Entities.ShopItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Category")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CategoryDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CodeWord")
-                        .IsRequired()
+                    b.Property<string>("CategoryItem")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MetaDescription")
                         .HasColumnType("nvarchar(max)");
@@ -376,10 +363,47 @@ namespace KursovaProject.Migrations
                     b.Property<string>("MetaTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Price")
+                    b.Property<string>("Subtitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Shop")
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ShopItems");
+                });
+
+            modelBuilder.Entity("MyCompany.Domain.Entities.TextField", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CodeWord")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaKeywords")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaTitle")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Subtitle")
@@ -403,7 +427,7 @@ namespace KursovaProject.Migrations
                         {
                             Id = new Guid("63dc8fa6-07ae-4391-8916-e057f71239ce"),
                             CodeWord = "PageIndex",
-                            DateAdded = new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(802),
+                            DateAdded = new DateTime(2023, 5, 2, 14, 4, 17, 413, DateTimeKind.Utc).AddTicks(2356),
                             Text = "Все заповнюється адміном",
                             Title = "Головна"
                         },
@@ -411,23 +435,15 @@ namespace KursovaProject.Migrations
                         {
                             Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a277f"),
                             CodeWord = "PageServices",
-                            DateAdded = new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(3783),
+                            DateAdded = new DateTime(2023, 5, 2, 14, 4, 17, 413, DateTimeKind.Utc).AddTicks(5287),
                             Text = "Все заповнюється адміном",
                             Title = "Каталог"
                         },
                         new
                         {
-                            Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a277a"),
-                            CodeWord = "PageShops",
-                            DateAdded = new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(3898),
-                            Text = "Все заповнюється адміном",
-                            Title = "Магазини"
-                        },
-                        new
-                        {
                             Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a278b"),
                             CodeWord = "PageCategoryItems",
-                            DateAdded = new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(3940),
+                            DateAdded = new DateTime(2023, 5, 2, 14, 4, 17, 413, DateTimeKind.Utc).AddTicks(5402),
                             Text = "Все заповнюється адміном",
                             Title = "Категорії"
                         },
@@ -435,7 +451,7 @@ namespace KursovaProject.Migrations
                         {
                             Id = new Guid("4aa76a4c-c59d-409a-84c1-06e6487a137a"),
                             CodeWord = "PageContacts",
-                            DateAdded = new DateTime(2023, 4, 27, 10, 8, 46, 924, DateTimeKind.Utc).AddTicks(3976),
+                            DateAdded = new DateTime(2023, 5, 2, 14, 4, 17, 413, DateTimeKind.Utc).AddTicks(5446),
                             Text = "Все заповнюється адміном",
                             Title = "Контакти"
                         });

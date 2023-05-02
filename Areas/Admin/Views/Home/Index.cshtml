@@ -33,14 +33,40 @@
         }
     </div>
     <div>
+        <h3>Магазини</h3>
+        <div class="div-box">
+            <a asp-area="Admin" asp-controller="ShopItems" asp-action="Edit" asp-route-id="">Додати</a>
+        </div>
+        @if (Model.shops.Any())
+        {
+            <div>
+                @foreach (ShopItem entity in Model.shops)
+                {
+                    <div>
+                        <a asp-area="Admin" asp-controller="ShopItems" asp-action="Edit" asp-route-id="@entity.Id">Редагувати</a>
+                        |
+                        <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="ShopItems" asp-action="Delete" method="post">
+                            <input type="hidden" name="id" value="@entity.Id">
+                            <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">Видалити</a>
+                        </form>
+                        |
+                        <a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="@entity.Id">
+                            @($"{entity.Title}")
+                        </a>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    <div>
         <h3>Категорії</h3>
         <div class="div-box">
             <a asp-area="Admin" asp-controller="CategoryItems" asp-action="Edit" asp-route-id="">Додати</a>
         </div>
-        @if (Model.categorys.Any())
+        @if (Model.categories.Any())
         {
             <div>
-                @foreach (CategoryItem entity in Model.categorys)
+                @foreach (CategoryItem entity in Model.categories)
                 {
                     <div>
                         <a asp-area="Admin" asp-controller="CategoryItems" asp-action="Edit" asp-route-id="@entity.Id">Редагувати</a>
@@ -50,8 +76,8 @@
                             <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">Видалити</a>
                         </form>
                         |
-                        <a asp-area="" asp-controller="Categorys" asp-action="Index" asp-route-id="@entity.Id">
-                            @($"{entity.Category}")
+                        <a asp-area="" asp-controller="Categories" asp-action="Index" asp-route-id="@entity.Id">
+                            @($"{entity.Title}")
                         </a>
                     </div>
                 }

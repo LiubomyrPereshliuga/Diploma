@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace MyCompany.Domain.Entities
 {
@@ -6,8 +8,10 @@ namespace MyCompany.Domain.Entities
     {
         [Required(ErrorMessage = "Вкажіть назву категорії")]
         [Display(Name = "Категорія")]
-        public override string Category { get; set; } = "Категорія";
+        public override string Title { get; set; } = "Категорія";
         [Display(Name = "Опис категорії")]
-        public override string CategoryDescription { get; set; }
+        public override string Description { get; set; } = "Опис категорії";
+        [Display(Name = "Зображення категорії")]
+        public override string TitleImagePath { get; set; }
     }
 }

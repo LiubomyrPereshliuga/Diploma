@@ -21,7 +21,8 @@ namespace MyCompany.Areas.Admin.Controllers
         {
             ViewModel mymodel = new ViewModel();
             mymodel.services = dataManager.ServiceItems.GetServiceItems();
-            mymodel.categorys = dataManager.CategoryItems.GetCategoryItems();
+            mymodel.categories = dataManager.CategoryItems.GetCategoryItems();
+            mymodel.shops = dataManager.ShopItems.GetShopItems();
             return View(mymodel);
         }
     }

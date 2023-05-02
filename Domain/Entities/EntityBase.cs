@@ -12,15 +12,8 @@ namespace MyCompany.Domain.Entities
 
         [Display(Name = "Назва")]
         public virtual string Title { get; set; }
-        [Display(Name = "Магазин")]
-        public virtual string Shop { get; set; }
-        [Display(Name = "Категорія")]
-        public virtual string Category { get; set; }
-        [Display(Name = "Опис категорії")]
-        public virtual string CategoryDescription { get; set; }
-        [Display(Name ="Ціна")]
-        public virtual string Price { get; set; }
-
+        [Display(Name = "Опис")]
+        public virtual string Description { get; set; }
         [Display(Name = "Короткий опис")]
         public virtual string Subtitle { get; set; }
 
