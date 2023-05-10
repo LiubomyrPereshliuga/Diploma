@@ -12,7 +12,6 @@
         <form asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="DateAdded" />
-            <input type="hidden" asp-for="TitleImagePath" />
 
             <div asp-validation-summary="All"></div>
             <div class="div-box">
@@ -31,6 +30,13 @@
                 <span asp-validation-for="ShopItem"></span>
             </div>
             <div class="div-box">
+                <label asp-for="TitleImagePath"></label>
+                <input type="file" name="titleImageFile" id="titleImageFile"/>
+                <div>
+                    <img class="img-block" src="~/images/@Model.TitleImagePath" />
+                </div>
+            </div>
+            <div class="div-box">
                 <label asp-for="Price"></label>
                 <input asp-for="Price" />
                 <span asp-validation-for="Price"></span>
@@ -44,13 +50,6 @@
                 <label asp-for="Text"></label>
                 <textarea asp-for="Text"></textarea>
                 <span asp-validation-for="Text"></span>
-            </div>
-            <div class="div-box">
-                <label asp-for="TitleImagePath"></label>
-                <input type="file" name="titleImageFile" id="titleImageFile" />
-                <div>
-                    <img class="img-block" src="~/images/@Model.TitleImagePath" />
-                </div>
             </div>
             <div class="div-box">
                 <label asp-for="MetaTitle"></label>

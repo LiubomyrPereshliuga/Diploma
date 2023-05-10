@@ -18,12 +18,18 @@ namespace MyCompany.Domain.Repositories.EntityFramework
         {
             return context.ServiceItems;
         }
-
         public ServiceItem GetServiceItemById(Guid id)
         {
             return context.ServiceItems.FirstOrDefault(x => x.Id == id);
         }
-
+        public IQueryable<ServiceItem> GetServiceItemsByTitle(string title)
+        {
+            if (!String.IsNullOrEmpty(title))
+            {
+                return context.ServiceItems.Where(p => p.Title.Contains(title));
+            }
+            else return context.ServiceItems;
+        }
         public void SaveServiceItem(ServiceItem entity)
         {
             if (entity.Id == default)

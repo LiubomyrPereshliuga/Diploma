@@ -7,7 +7,11 @@
     ViewBag.Keywords = textField.MetaKeywords;
     Layout = "_LayoutWithHeader";
 }
-
+<article>
+    <header class="major">
+        <h2>Каталог магазинів</h2>
+    </header>
+</article>
 <div style="display: flex; flex-wrap: wrap; min-height: 100vh;">
     @if (Model.Any())
     {

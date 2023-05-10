@@ -6,34 +6,38 @@
     @await Html.PartialAsync("CssPartial")
 </head>
 <body class="left-sidebar is-preload">
-    <header id="header">
-        <div class="inner">
-            <!-- Logo -->
-            <h1><a asp-area="" asp-controller="Home" asp-action="Index" id="logo">Довідник покупця</a></h1>
+    <div class="page-wrapper">
+        <div id="header-wrapper">
+            <div class="container">
+                <header id="header">
+                    <div class="inner">
+                        <!-- Logo -->
+                        <h1><a asp-area="" asp-controller="Home" asp-action="Index" id="logo">Довідник покупця</a></h1>
 
-            <!-- Nav -->
-            <nav id="nav">
-                <ul>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Головна</a></li>
-                    <li><a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="">Каталог</a></li>
-                    <li><a asp-area="" asp-controller="Categories" asp-action="Index" asp-route-id="">Категорії</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contacts">Контакти</a></li>
-                </ul>
-            </nav>
+                        <!-- Nav -->
+                        <nav id="nav">
+                            <ul>
+                                <li style="white-space: nowrap;"><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="">Головна</a></li>
+                                <li style="white-space: nowrap;"><a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="">Каталог</a></li>
+                                <li style="white-space: nowrap;"><a asp-area="" asp-controller="Categories" asp-action="Index" asp-route-id="">Категорії</a></li>
+                                <li style="white-space: nowrap;"><a asp-area="" asp-controller="Home" asp-action="Contacts">Контакти</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </header>
+            </div>
         </div>
-    </header>
-    <div id="main-wrapper">
-        <div class="wrapper style2">
-            <div class="inner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-4 col-12-medium">
-                            <div id="sidebar">
-                                @await Html.PartialAsync("SidebarPartial")
+        <div id="main-wrapper">
+            <div class="wrapper style2">
+                <div class="inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4 col-12-medium">
+                                <div id="sidebar">
+                                    @await Html.PartialAsync("SidebarPartial")
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-8 col-12-medium imp-medium">
-                            <div id="content">
+                            <div class="col-8 col-12-medium imp-medium">
                                 @RenderBody()
                             </div>
                         </div>
@@ -41,10 +45,10 @@
                 </div>
             </div>
         </div>
+        <div id="footer-wrapper">
+            @await Html.PartialAsync("FooterPartial")
+        </div>
     </div>
-    <div id="footer-wrapper">
-        @await Html.PartialAsync("FooterPartial")
-    </div>
-    @await Html.PartialAsync("ScriptsPartial")
+        @await Html.PartialAsync("ScriptsPartial")
 </body>
 </html>

@@ -24,5 +24,10 @@ namespace MyCompany.Controllers
             ViewBag.TextField = dataManager.TextFields.GetTextFieldByCodeWord("PageServices");
             return View(dataManager.ServiceItems.GetServiceItems());
         }
+        public IActionResult Find(string title)
+        {
+            ViewBag.TextField = dataManager.TextFields.GetTextFieldByCodeWord("PageServices");
+            return View(dataManager.ServiceItems.GetServiceItemsByTitle(title));
+        }
     }
 }

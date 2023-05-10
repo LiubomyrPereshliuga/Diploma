@@ -1,16 +1,14 @@
 ﻿@model IQueryable<ServiceItem>
-<div id="sidebar">
-
     <section>
         @if (Model?.Any() == true)
         {
             int i = 0;
             <section>
                 <header class="major">
-                    <h2>Топ-3 товарів</h2>
+                    <h2>Останні товари</h2>
                 </header>
                 <ul class="small-image-list">
-                    @foreach (ServiceItem entity in Model)
+                    @foreach (ServiceItem entity in Model.OrderByDescending(m => m.DateAdded))
                     {
                         <li>
                             <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
@@ -22,9 +20,6 @@
                             <p>
                                 Категорія: @entity.CategoryItem, Магазин: @entity.ShopItem, ціна: @entity.Price
                             </p>
-                            <p>
-                                @entity.Subtitle
-                            </p>
                         </li>
                         i++;
                         @if (i == 3) break;
@@ -33,5 +28,3 @@
             </section>
         }
     </section>
-
-</div>

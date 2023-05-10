@@ -11,10 +11,10 @@
         @Model.shop.Title
     </h2>
     <div>
-        <img class="img-block" src="~/images/@Model.shop.TitleImagePath" />
+        <img class="img-block" src="~/images/@Model.shop.TitleImagePath" style="width: 350px; height: 350px" />
     </div>
 </div>
-<h2>Товари з цим магазином:</h2>
+<h2>Товари в магазині:</h2>
 <div style="display: flex; flex-wrap: wrap; min-height: 100vh;">
     @if (Model.services.Any())
     {

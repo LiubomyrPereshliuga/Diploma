@@ -15,7 +15,6 @@ namespace MyCompany.Domain.Entities
         [Required(ErrorMessage = "Заповніть категорію")]
         [Display(Name = "Категорія")]
         public string CategoryItem { get; set; }
-        [Required(ErrorMessage = "Виберіть зображення")]
         [Display(Name = "Зображення")]
         public override string TitleImagePath { get; set; }
         [Required(ErrorMessage = "Заповність ціну товару")]

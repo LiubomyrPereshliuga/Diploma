@@ -1,0 +1,39 @@
+﻿@model IQueryable<ServiceItem>
+@{
+    TextField textField = ViewBag.TextField;
+
+    ViewBag.Title = textField.MetaTitle;
+    ViewBag.Description = textField.MetaDescription;
+    ViewBag.Keywords = textField.MetaKeywords;
+}
+<section>
+    <form asp-action="Find" method="get" style="display: grid; ">
+        <div class="form-inline form-group">
+            <h2 style="margin: 0">Товар:</h2>
+            <input type="text" name="title" class="form-control" style="margin-bottom: 1em"/>
+
+            <input type="submit" value="Знайти" class="btn btn-default" style="width: fit-content; margin-left: 2em;"/>
+        </div>
+    </form>
+</section>
+<p>Наявні товари</p>
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh;">
+    @if (Model.Any())
+    {
+        <ul class="big-image-list" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            @foreach (ServiceItem entity in Model)
+            {
+                <li>
+                    <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
+                        <img src="~/images/@entity.TitleImagePath" alt="" class="left" style="width: 350px; height: 350px" />
+                    </a>
+                    <h4>@entity.Title</h4>
+                    <p>Магазин з цим товаром: @entity.ShopItem</p>
+                    <p>Категорія: @entity.CategoryItem</p>
+                    <p>Короткий опис: @entity.Subtitle</p>
+                    <p>Ціна: @entity.Price</p>
+                </li>
+            }
+        </ul>
+    }
+</div>

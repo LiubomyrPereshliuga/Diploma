@@ -6,7 +6,19 @@
     ViewBag.Description = textField.MetaDescription;
     ViewBag.Keywords = textField.MetaKeywords;
 }
+<form asp-action="Find" method="get" style="display: grid; ">
+    <div class="form-inline form-group">
+        <h2 style="margin-bottom: 1em">Товар:</h2>
+        <input type="text" name="title" class="form-control" style="margin-bottom: 1em" />
 
+        <input type="submit" value="Знайти" class="btn btn-default" style="width: fit-content;" />
+    </div>
+</form>
+<article>
+    <header class="major">
+        <h2>Каталог товарів</h2>
+    </header>
+</article>
 <div style="display: flex; flex-wrap: wrap; min-height: 100vh;">
     @if (Model.Any())
     {
