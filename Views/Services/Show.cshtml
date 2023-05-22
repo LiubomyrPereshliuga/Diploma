@@ -5,19 +5,19 @@
     ViewBag.Keywords = Model.MetaKeywords;
 }
 
-<div>
-    <h2>
+<div style="margin-bottom: 2em; padding: 0.5em; border: 1px solid rgba(0,0,0,.125); border-radius: 0.25rem;">
+    <h2 style="text-align:center">
         @Model.Title
     </h2>
-    <h2>
-        @Model.Subtitle
-    </h2>
-    <div>
-        <img class="img-block" src="~/images/@Model.TitleImagePath" style="width: 350px; height: 350px" />
+    <div style="width: 500px; height: 500px; display: flex; justify-content: center; margin: 0 auto;">
+        <img class="img-block" src="~/images/@Model.TitleImagePath" style="height: 100%; max-width: 100%" />
     </div>
-    <h2>
-        Категорія: @Model.CategoryItem, магазин: @Model.ShopItem, Ціна: @Model.Price грн
-    </h2>
+    <h3 style="text-align:center">
+        @Model.Subtitle
+    </h3>
+    <div style="display: flex; justify-content: space-evenly">
+        <h4>Категорія: @Model.CategoryItem</h4> <h4>Магазин: @Model.ShopItem</h4> <h4>Ціна: @Model.Price грн</h4>
+    </div>
 </div>
 <div>
     @Html.Raw(Model.Text)

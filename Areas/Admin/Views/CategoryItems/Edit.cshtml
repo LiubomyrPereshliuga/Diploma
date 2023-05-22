@@ -27,8 +27,8 @@
             <div class="div-box">
                 <label asp-for="TitleImagePath"></label>
                 <input type="file" name="titleImageFile" id="titleImageFile" />
-                <div>
-                    <img class="img-block" src="~/images/@Model.TitleImagePath" />
+                <div style="width: 350px; height: 350px; display: flex; justify-content: center; margin: 0 auto">
+                    <img class="img-block" src="~/images/@Model.TitleImagePath" style="height:100%; max-width:100%"/>
                 </div>
             </div>
             <div class="div-box">

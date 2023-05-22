@@ -10,17 +10,21 @@
                 <ul class="small-image-list">
                     @foreach (ServiceItem entity in Model.OrderByDescending(m => m.DateAdded))
                     {
-                        <li>
-                            <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                                <img src="~/images/@entity.TitleImagePath" alt="" class="left" style="width: 200px; height:200px;"/>
-                            </a>
-                            <h4>
-                                @entity.Title
-                            </h4>
-                            <p>
-                                Категорія: @entity.CategoryItem, Магазин: @entity.ShopItem, ціна: @entity.Price
-                            </p>
-                        </li>
+                     <li style="margin-bottom: 1em; border: 1px solid rgba(0,0,0,.125); border-radius: 0.25rem; padding: 0.5em;">
+                         <div style="width: 200px; height: 200px; display: flex; justify-content: center; margin: 0 auto">
+                        <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
+                            <img src="~/images/@entity.TitleImagePath" alt="" class="left" style="height: 100%; max-width: 100%"/>
+                        </a>
+                         </div>
+                        <h4 style="text-align: center">
+                            @entity.Title
+                        </h4>
+                        <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+                         <p style="margin: 0">Категорія: @entity.CategoryItem</p>
+                         <p style="margin: 0">Магазин: @entity.ShopItem</p>
+                         <p style="margin: 0">Ціна: @entity.Price грн</p>
+                        </div>
+                     </li>
                         i++;
                         @if (i == 3) break;
                     }

@@ -6,34 +6,71 @@
     ViewBag.Description = textField.MetaDescription;
     ViewBag.Keywords = textField.MetaKeywords;
 }
-<form asp-action="Find" method="get" style="display: grid; ">
-    <div class="form-inline form-group">
-        <h2 style="margin-bottom: 1em">Товар:</h2>
-        <input type="text" name="title" class="form-control" style="margin-bottom: 1em" />
-
-        <input type="submit" value="Знайти" class="btn btn-default" style="width: fit-content;" />
+<form asp-action="Find" method="get">
+    <h2 style="margin-bottom: 1em">Пошук:</h2>
+    <input type="text" name="text" class="form-control" style="margin-bottom: 1em" />
+    <div id="div1" style="display: none">
+        <div class="swrapper">
+            <div class="svalues">
+                <input type="number" class="form-control" id="range1" name="num1" min="0" value="2000" max="100000" oninput="inputOne()" />
+                <span> &dash; </span>
+                <input type="number" class="form-control" id="range2" name="num2" min="0" value="17000" max="100000" oninput="inputTwo()" />
+            </div>
+            <div class="scontainer">
+                <div class="slider-track"></div>
+                <input type="range" min="0" max="100000" step="100" value="3000" id="slider-1" oninput="slideOne()">
+                <input type="range" min="0" max="100000" step="100" value="17000" id="slider-2" oninput="slideTwo()">
+            </div>
+        </div>
     </div>
+    <h3 style="margin-bottom: 1em; margin-top: 0">Шукати за:</h3>
+    <fieldset style="display: flex; justify-content: space-between; margin-bottom: 1em;">
+        <div>
+            <label for="1" style="margin: 0">Назва</label>
+            <input type="radio" id="radio1" name="radio" value="1" checked onclick="show1();" />
+        </div>
+        <div>
+            <label for="2" style="margin: 0">Виробник</label>
+            <input type="radio" id="radio2" name="radio" value="2" onclick="show1();" />
+        </div>
+        <div>
+            <label for="3" style="margin: 0">Магазин</label>
+            <input type="radio" id="radio3" name="radio" value="3" onclick="show1();" />
+        </div>
+        <div>
+            <label for="4" style="margin: 0">Категорія</label>
+            <input type="radio" id="radio4" name="radio" value="4" onclick="show1();" />
+        </div>
+        <div>
+            <label for="5" style="margin: 0">Ціна</label>
+            <input type="checkbox" id="check" name="checkbox" value="5" onclick="show2();" />
+        </div>
+        <input type="submit" value="Знайти" class="btn btn-default" style="width: fit-content" />
+    </fieldset>
 </form>
 <article>
     <header class="major">
-        <h2>Каталог товарів</h2>
+        <h2 style="text-align:center">Каталог товарів</h2>
     </header>
 </article>
-<div style="display: flex; flex-wrap: wrap; min-height: 100vh;">
+<div style="display: flex; flex-wrap: wrap;">
     @if (Model.Any())
     {
-        <ul class="big-image-list" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <ul class="big-image-list" style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
             @foreach (ServiceItem entity in Model)
             {
-                <li>
+                <li style="margin-bottom: 2em; padding: 0.5em; border: 1px solid rgba(0,0,0,.125); border-radius: 0.25rem;">
+                    <div style="width: 350px; height: 350px; display: flex; justify-content: center; margin: 0 auto">
                     <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                        <img src="~/images/@entity.TitleImagePath" alt="" class="left" style="width: 350px; height: 350px" />
+                        <img src="~/images/@entity.TitleImagePath" alt="" class="left" style="height: 100%; max-width: 100%;"/>
                     </a>
-                    <h4>@entity.Title</h4>
+                    </div>
+                    <h4 style="text-align: center">@entity.Title</h4>
+                    <p>Виробник: @entity.Maker</p>
                     <p>Магазин з цим товаром: @entity.ShopItem</p>
                     <p>Категорія: @entity.CategoryItem</p>
                     <p>Короткий опис: @entity.Subtitle</p>
-                    <p>Ціна: @entity.Price</p>
+                    <p>Ціна: @entity.Price грн</p>
                 </li>
             }
         </ul>

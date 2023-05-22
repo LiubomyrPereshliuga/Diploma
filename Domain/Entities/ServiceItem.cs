@@ -12,6 +12,8 @@ namespace MyCompany.Domain.Entities
         [Required(ErrorMessage = "Заповність назву магазину")]
         [Display(Name = "Магазин")]
         public string ShopItem { get; set; }
+        [Display(Name = "Виробник")]
+        public string Maker { get; set; }
         [Required(ErrorMessage = "Заповніть категорію")]
         [Display(Name = "Категорія")]
         public string CategoryItem { get; set; }
@@ -19,7 +21,7 @@ namespace MyCompany.Domain.Entities
         public override string TitleImagePath { get; set; }
         [Required(ErrorMessage = "Заповність ціну товару")]
         [Display(Name = "Ціна")]
-        public string Price { get; set; }
+        public int Price { get; set; }
 
         [Display(Name = "Короткий опис")]
         public override string Subtitle { get; set; }
