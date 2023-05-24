@@ -19,6 +19,8 @@ namespace MyCompany.Domain.Entities
         public string CategoryItem { get; set; }
         [Display(Name = "Зображення")]
         public override string TitleImagePath { get; set; }
+        [Display(Name = "Посилання")]
+        public string URL { get; set; }
         [Required(ErrorMessage = "Заповність ціну товару")]
         [Display(Name = "Ціна")]
         public int Price { get; set; }

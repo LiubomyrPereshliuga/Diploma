@@ -3,6 +3,8 @@
     ViewBag.Title = Model.MetaTitle;
     ViewBag.Description = Model.MetaDescription;
     ViewBag.Keywords = Model.MetaKeywords;
+    if (Model.URL == null) Model.URL = "Немає";
+    if (Model.Maker == null) Model.Maker = "Невідомо";
 }
 
 <div style="margin-bottom: 2em; padding: 0.5em; border: 1px solid rgba(0,0,0,.125); border-radius: 0.25rem;">
@@ -16,7 +18,10 @@
         @Model.Subtitle
     </h3>
     <div style="display: flex; justify-content: space-evenly">
-        <h4>Категорія: @Model.CategoryItem</h4> <h4>Магазин: @Model.ShopItem</h4> <h4>Ціна: @Model.Price грн</h4>
+        <h4>Категорія: @Model.CategoryItem</h4> <h4>Магазин: @Model.ShopItem</h4> <h4>Ціна: @Model.Price грн</h4> 
+        <h4>Виробник: @Model.Maker</h4> <h4>Посилання:
+        @if (Model.URL != "Немає") {<a href="@Model.URL" target="_blank"><u>Сюди</u></a>}
+        else {@Model.URL}</h4>
     </div>
 </div>
 <div>

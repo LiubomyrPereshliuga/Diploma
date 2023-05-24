@@ -14,5 +14,7 @@ namespace MyCompany.Domain.Entities
         public override string TitleImagePath { get; set; }
         [Display(Name = "Категорія магазину")]
         public string CategoryItem { get; set; }
+        [Display(Name = "Посилання")]
+        public string URL { get; set; }
     }
 }

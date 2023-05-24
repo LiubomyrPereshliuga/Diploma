@@ -4,6 +4,7 @@
     ViewBag.Title = Model.shop.MetaTitle;
     ViewBag.Description = Model.shop.MetaDescription;
     ViewBag.Keywords = Model.shop.MetaKeywords;
+    if (Model.shop.URL == null) Model.shop.URL = "Немає";
 }
 
 <div style="margin-bottom: 2em;">
@@ -11,8 +12,16 @@
         @Model.shop.Title
     </h2>
     <div style="width: 500px; height: 500px; display: flex; justify-content: center; margin: 0 auto;">
-        <img class="img-block" src="~/images/@Model.shop.TitleImagePath" style="height: 100%; max-width:100%"/>
+        <img class="img-block" src="~/images/@Model.shop.TitleImagePath" style="height: 100%; max-width:100%" />
     </div>
+    <h3>@Model.shop.Description</h3>
+    <h4>
+        Посилання:
+        @if (Model.shop.URL != "Немає")
+        {<a href="@Model.shop.URL" target="_blank"><u>Сюди</u></a>}
+        else
+        { @Model.shop.URL}
+    </h4>
 </div>
 <h2 style="text-align:center">Товари в магазині:</h2>
 <div>
