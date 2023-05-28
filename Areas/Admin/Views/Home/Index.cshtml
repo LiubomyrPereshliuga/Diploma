@@ -4,10 +4,10 @@
     string strTitle = "Панель адміністратора";
     ViewBag.Title = strTitle;
 }
-<h2 style="text-align:center">@strTitle</h2>
-<div style="display: flex; justify-content: space-between; margin-bottom: 2em">
-    <div style="padding: 0.5em; border: 1px solid rgba(0,0,0,.125); border-radius: 0.25rem">
-        <h3 style="text-align:center; margin-top: 0">Каталог</h3>
+<h2 class="center">@strTitle</h2>
+<div class="adm-main">
+    <div class="div-main">
+        <h3 class="center mt0">Каталог</h3>
         <div class="div-box">
             <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="">Додати</a>
         </div>
@@ -32,8 +32,8 @@
             </div>
         }
     </div>
-    <div style="padding: 0.5em; border: 1px solid rgba(0,0,0,.125); border-radius: 0.25rem">
-        <h3 style="text-align: center; margin-top: 0">Магазини</h3>
+    <div class="div-main">
+        <h3 class="center mt0">Магазини</h3>
         <div class="div-box">
             <a asp-area="Admin" asp-controller="ShopItems" asp-action="Edit" asp-route-id="">Додати</a>
         </div>
@@ -58,8 +58,8 @@
             </div>
         }
     </div>
-    <div style="padding: 0.5em; border: 1px solid rgba(0,0,0,.125); border-radius: 0.25rem">
-        <h3 style="text-align: center; margin-top: 0">Категорії</h3>
+    <div class="div-main">
+        <h3 class="center mt0">Категорії</h3>
         <div class="div-box">
             <a asp-area="Admin" asp-controller="CategoryItems" asp-action="Edit" asp-route-id="">Додати</a>
         </div>
@@ -84,11 +84,11 @@
             </div>
         }
     </div>
-    <div class="div-box" style="padding: 0.5em; border: 1px solid rgba(0,0,0,.125); border-radius: 0.25rem">
-        <h3 style="text-align: center; margin-top: 0">Редагування сторінки сайту</h3>
-        <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageIndex">Головна</a>
+    <div class="div-box div-main">
+        <h3 class="center mt0">Редагування сторінки сайту</h3>
+        @*<a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageIndex">Головна</a>
         <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageServices">Каталог</a>
-        <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageCategoryItems">Категорії</a>
+        <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageCategoryItems">Категорії</a>*@
         <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageContacts">Контакти</a>
     </div>
 </div>

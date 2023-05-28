@@ -7,12 +7,12 @@
     if (Model.shop.URL == null) Model.shop.URL = "Немає";
 }
 
-<div style="margin-bottom: 2em;">
-    <h2 style="text-align:center">
+<div class="div-main">
+    <h2 class="center">
         @Model.shop.Title
     </h2>
-    <div style="width: 500px; height: 500px; display: flex; justify-content: center; margin: 0 auto;">
-        <img class="img-block" src="~/images/@Model.shop.TitleImagePath" style="height: 100%; max-width:100%" />
+    <div class="div-img">
+        <img class="img-block" src="~/images/@Model.shop.TitleImagePath"/>
     </div>
     <h3>@Model.shop.Description</h3>
     <h4>
@@ -20,31 +20,30 @@
         @if (Model.shop.URL != "Немає")
         {<a href="@Model.shop.URL" target="_blank"><u>Сюди</u></a>}
         else
-        { @Model.shop.URL}
+        {<span class="disabled">@Model.shop.URL</span>}
     </h4>
 </div>
-<h2 style="text-align:center">Товари в магазині:</h2>
+<h2 class="center">Товари в магазині:</h2>
 <div>
     @if (Model.services.Any())
     {
-        <ul class="big-image-list" style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
+        <ul class="big-image-list flex-ul">
             @foreach (ServiceItem entity in Model.services)
             {
                 @if (entity.ShopItem == Model.shop.Title)
                 {
-            <li style="margin-bottom: 2em; padding: 0.5em; border: 1px solid rgba(0,0,0,.125); border-radius: 0.25rem;">
-                <div style="width: 350px; height: 350px; display: flex; justify-content: center; margin: 0 auto">
+             <li class="li-card">
+                <div class="div-card">
                 <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                    <img src="~/images/@entity.TitleImagePath" alt="" class="left" style="height: 100%; max-width:100%"/>
+                    <img src="~/images/@entity.TitleImagePath" alt="" class="left"/>
                 </a>
                 </div>
-                <h4 style="text-align:center">@entity.Title</h4>
-                <p>Категорія: @entity.CategoryItem</p>
+                <h4 class="center">@entity.Title</h4>
                 <p>Короткий опис: @entity.Subtitle</p>
                 <p>Ціна: @entity.Price грн</p>
-            </li>
-                    }
+             </li>
                 }
+            }
         </ul>
     }
 </div>

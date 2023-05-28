@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using MyCompany.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,6 @@ namespace KursovaProject.Models
     public class ServiceViewModel
     {
         public ServiceItem service { get; set; }
-        public IQueryable<CategoryItem> categories { get; set; }
-        public IQueryable<ShopItem> shops { get; set; }
+        public IQueryable<ServiceItem> serviceItems { get; set; }
     }
 }

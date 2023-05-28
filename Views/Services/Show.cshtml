@@ -3,27 +3,36 @@
     ViewBag.Title = Model.MetaTitle;
     ViewBag.Description = Model.MetaDescription;
     ViewBag.Keywords = Model.MetaKeywords;
-    if (Model.URL == null) Model.URL = "Немає";
+    if (Model.URL == null) Model.URL = "Немає в наявності";
     if (Model.Maker == null) Model.Maker = "Невідомо";
 }
 
-<div style="margin-bottom: 2em; padding: 0.5em; border: 1px solid rgba(0,0,0,.125); border-radius: 0.25rem;">
+<div class="div-main">
     <h2 style="text-align:center">
         @Model.Title
     </h2>
-    <div style="width: 500px; height: 500px; display: flex; justify-content: center; margin: 0 auto;">
-        <img class="img-block" src="~/images/@Model.TitleImagePath" style="height: 100%; max-width: 100%" />
+    <div class="div-img">
+        <img class="img-block" src="~/images/@Model.TitleImagePath" />
     </div>
-    <h3 style="text-align:center">
+    <h3 class="center">
         @Model.Subtitle
     </h3>
-    <div style="display: flex; justify-content: space-evenly">
-        <h4>Категорія: @Model.CategoryItem</h4> <h4>Магазин: @Model.ShopItem</h4> <h4>Ціна: @Model.Price грн</h4> 
-        <h4>Виробник: @Model.Maker</h4> <h4>Посилання:
-        @if (Model.URL != "Немає") {<a href="@Model.URL" target="_blank"><u>Сюди</u></a>}
-        else {@Model.URL}</h4>
+    <div class="div-text">
+        <h4>Категорія: @Model.CategoryItem</h4> <h4>Магазин: @Model.ShopItem</h4> <h4>Ціна: @Model.Price грн</h4>
+        <h4>Виробник: @Model.Maker</h4>
     </div>
+    <h4 class="mt1">
+        Купити:
+        @if (Model.URL != "Немає в наявності")
+        {<a href="@Model.URL" target="_blank"><u>Сюди</u></a>}
+        else
+        {<span class="disabled">@Model.URL</span>}
+    </h4>
 </div>
-<div>
-    @Html.Raw(Model.Text)
-</div>
+<form asp-area="" asp-action="Find" method="post">
+    <div style="display: none">
+        <input type="radio" id="radio3" name="radio" value="3" checked />
+        <input type="text" name="text" value="@Model.ShopItem"/>
+    </div>
+    <input type="submit" value="Більше у магазині: @Model.ShopItem" />
+</form>

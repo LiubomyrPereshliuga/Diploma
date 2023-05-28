@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using MyCompany.Domain.Entities;
+using KursovaProject.Models;
 
 namespace MyCompany.Domain.Repositories.Abstract
 {

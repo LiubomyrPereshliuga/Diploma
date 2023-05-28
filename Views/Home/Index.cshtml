@@ -9,22 +9,22 @@
 }
 <article>
     <header class="major">
-        <h2 style="text-align: center">Магазини</h2>
+        <h2 class="center">Магазини</h2>
     </header>
 </article>
-<div style="display: flex; flex-wrap: wrap">
+<div class="flex-div">
     @if (Model.Any())
     {
-        <ul class="big-image-list" style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
+        <ul class="big-image-list flex-ul">
             @foreach (ShopItem entity in Model)
              {
-             <li style="margin-bottom: 2em; padding: 0.5em; border: 1px solid rgba(0,0,0,.125); border-radius: 0.25rem;">
-                 <div style="width: 350px; height: 350px; display: flex; justify-content: center; margin: 0 auto">
+             <li class="li-card">
+                 <div class="div-card">
                 <a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="@entity.Id">
-                    <img src="~/images/@entity.TitleImagePath" alt="" class="left" style=" height: 100%; max-width: 100%"/>
+                    <img src="~/images/@entity.TitleImagePath" alt="" class="left"/>
                 </a>
                      </div>
-                <h4 style="text-align:center;">@entity.Title</h4>
+                <h4 class="center">@entity.Title</h4>
                 <p>@entity.Description</p>
              </li>
              }

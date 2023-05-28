@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using MyCompany.Domain.Entities;
 using MyCompany.Domain.Repositories.Abstract;
+using KursovaProject.Models;
 
 namespace MyCompany.Domain.Repositories.EntityFramework
 {

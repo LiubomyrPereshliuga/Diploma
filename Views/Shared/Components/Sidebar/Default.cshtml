@@ -5,21 +5,21 @@
             int i = 0;
             <section>
                 <header class="major">
-                    <h2>Останні товари</h2>
+                    <h2 class="center">Новинки</h2>
                 </header>
                 <ul class="small-image-list">
                     @foreach (ServiceItem entity in Model.OrderByDescending(m => m.DateAdded))
                     {
-                     <li style="margin-bottom: 1em; border: 1px solid rgba(0,0,0,.125); border-radius: 0.25rem; padding: 0.5em;">
-                         <div style="width: 200px; height: 200px; display: flex; justify-content: center; margin: 0 auto">
+                     <li class="li-side">
+                         <div class="div-side">
                         <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                            <img src="~/images/@entity.TitleImagePath" alt="" class="left" style="height: 100%; max-width: 100%"/>
+                            <img src="~/images/@entity.TitleImagePath" alt="" class="left"/>
                         </a>
                          </div>
-                        <h4 style="text-align: center">
+                        <h4 class="center">
                             @entity.Title
                         </h4>
-                        <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+                        <div class="flex-ul">
                          <p style="margin: 0">Категорія: @entity.CategoryItem</p>
                          <p style="margin: 0">Магазин: @entity.ShopItem</p>
                          <p style="margin: 0">Ціна: @entity.Price грн</p>

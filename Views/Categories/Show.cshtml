@@ -6,27 +6,27 @@
     ViewBag.Keywords = Model.category.MetaKeywords;
 }
 
-<div style="margin-bottom: 2em">
-    <h2 style="text-align:center">
+<div class="mb2">
+    <h2 class="center">
         @Model.category.Title
     </h2>
-    <div style="width: 500px; height: 500px; display: flex; justify-content: center; margin: 0 auto;">
+    <div class="div-img">
         <img class="img-block" src="~/images/@Model.category.TitleImagePath" style="height: 100%; max-width:100%"/>
     </div>
 </div>
-<h2 style="text-align:center">Товари в даній категорії:</h2>
-<div style="display: flex; flex-wrap: wrap">
+<h2 class="center">Товари в даній категорії:</h2>
+<div>
     @if (Model.services.Any())
     {
-        <ul class="big-image-list" style="display: flex; flex-wrap: wrap; justify-content: space-evenly">
+        <ul class="big-image-list flex-ul">
             @foreach (ServiceItem entity in Model.services)
             {
                 @if (entity.CategoryItem == Model.category.Title)
                  {
-                <li style="margin-bottom: 2em; border: 1px solid rgba(0,0,0,.125); border-radius: 0.25rem;">
-                    <div style="width: 350px; height: 350px; display: flex; justify-content: center; margin: 0 auto;">
+                <li class="li-card">
+                    <div class="div-card">
                     <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                        <img src="~/images/@entity.TitleImagePath" alt="" class="left" style="height: 100%; max-width:100%"/>
+                        <img src="~/images/@entity.TitleImagePath" alt="" class="left"/>
                     </a>
                         </div>
                     <h4>@entity.Title</h4>
