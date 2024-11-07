@@ -1,11 +1,14 @@
 ﻿using System;
 using System.IO;
+using System.Net;
+using System.Drawing.Imaging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyCompany.Domain;
 using MyCompany.Domain.Entities;
 using MyCompany.Service;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MyCompany.Areas.Admin.Controllers
 {
@@ -32,10 +35,22 @@ namespace MyCompany.Areas.Admin.Controllers
             {
                 if (titleImageFile != null)
                 {
-                    model.TitleImagePath = titleImageFile.FileName;
-                    using (var stream = new FileStream(Path.Combine(hostingEnvironment.WebRootPath, "images/", titleImageFile.FileName), FileMode.Create))
+                    model.TitleImage = titleImageFile.FileName;
+                    MemoryStream ms = new MemoryStream();
+                    titleImageFile.CopyTo(ms);
+                    model.TitleImagePath = ms.ToArray();
+                }
+                else
+                {
+                    string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", "placeholder.png");
+                    model.TitleImage = "Placeholder";
+                    using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
                     {
-                        titleImageFile.CopyTo(stream);
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            fs.CopyTo(ms);
+                            model.TitleImagePath = ms.ToArray();
+                        }
                     }
                 }
                 dataManager.CategoryItems.SaveCategoryItem(model);
