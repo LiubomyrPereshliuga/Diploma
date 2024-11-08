@@ -5,6 +5,11 @@
     ViewBag.Description = Model.shop.MetaDescription;
     ViewBag.Keywords = Model.shop.MetaKeywords;
     if (Model.shop.URL == null) Model.shop.URL = "Немає";
+    string imageBase64Data =
+Convert.ToBase64String(Model.shop.TitleImagePath);
+    string imageDataURL =
+string.Format("data:image/jpg;base64,{0}",
+imageBase64Data);
 }
 
 <div class="div-main">
@@ -12,9 +17,9 @@
         @Model.shop.Title
     </h2>
     <div class="div-img">
-        <img class="img-block" src="~/images/@Model.shop.TitleImagePath"/>
+        <img class="img-block" src="@imageDataURL"/>
     </div>
-    <h3>@Model.shop.Description</h3>
+    <h3>@Model.shop.Subtitle</h3>
     <h4>
         Посилання:
         @if (Model.shop.URL != "Немає")
@@ -32,10 +37,15 @@
             {
                 @if (entity.ShopItem == Model.shop.Title)
                 {
+                    string imageBase64DataService =
+                    Convert.ToBase64String(entity.TitleImagePath);
+                    string imageDataURLService =
+                string.Format("data:image/jpg;base64,{0}",
+                imageBase64DataService);
              <li class="li-card">
                 <div class="div-card">
                 <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                    <img src="~/images/@entity.TitleImagePath" alt="" class="left"/>
+                    <img src="@imageDataURLService" alt="" class="left"/>
                 </a>
                 </div>
                 <h4 class="center">@entity.Title</h4>

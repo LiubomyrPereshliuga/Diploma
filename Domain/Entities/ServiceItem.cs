@@ -18,7 +18,8 @@ namespace MyCompany.Domain.Entities
         [Display(Name = "Категорія")]
         public string CategoryItem { get; set; }
         [Display(Name = "Зображення")]
-        public override string TitleImagePath { get; set; }
+        public string TitleImage { get; set; }
+        public byte[] TitleImagePath { get; set; }
         [Display(Name = "Посилання")]
         public string URL { get; set; }
         [Required(ErrorMessage = "Заповність ціну товару")]
@@ -26,7 +27,7 @@ namespace MyCompany.Domain.Entities
         public int Price { get; set; }
 
         [Display(Name = "Короткий опис")]
-        public override string Subtitle { get; set; }
+        public string Subtitle { get; set; }
 
         [Display(Name = "Повний опис")]
         public override string Text { get; set; }

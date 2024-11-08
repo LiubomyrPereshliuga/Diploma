@@ -5,6 +5,11 @@
     ViewBag.Keywords = Model.MetaKeywords;
     if (Model.URL == null) Model.URL = "Немає в наявності";
     if (Model.Maker == null) Model.Maker = "Невідомо";
+    string imageBase64Data =
+Convert.ToBase64String(Model.TitleImagePath);
+    string imageDataURL =
+string.Format("data:image/jpg;base64,{0}",
+imageBase64Data);
 }
 
 <div class="div-main">
@@ -12,7 +17,7 @@
         @Model.Title
     </h2>
     <div class="div-img">
-        <img class="img-block" src="~/images/@Model.TitleImagePath" />
+        <img class="img-block" src="@imageDataURL" />
     </div>
     <h3 class="center">
         @Model.Subtitle
@@ -29,10 +34,18 @@
         {<span class="disabled">@Model.URL</span>}
     </h4>
 </div>
-<form asp-area="" asp-action="Find" method="post">
-    <div style="display: none">
-        <input type="radio" id="radio3" name="radio" value="3" checked />
-        <input type="text" name="text" value="@Model.ShopItem"/>
-    </div>
-    <input type="submit" value="Більше у магазині: @Model.ShopItem" />
-</form>
+<div class="flex-div" style="justify-content: space-around">
+    <form asp-area="" asp-action="Find" method="post">
+        <div style="display: none">
+            <input type="radio" id="radio3" name="radio" value="3" checked />
+            <input type="text" name="text" value="@Model.ShopItem" />
+        </div>
+        <input type="submit" value="Більше у магазині: @Model.ShopItem" />
+    </form>
+    <form asp-area="" asp-action="Conparsion" method="post">
+        <div style="display: none">
+            <input type="text" name="text" value="@Model.Title" />
+        </div>
+        <input type="submit" value="Порівняти ціни" />
+    </form>
+</div>

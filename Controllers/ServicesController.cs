@@ -30,6 +30,7 @@ namespace MyCompany.Controllers
             switch (radio)
             {
                 case "1":
+                    ViewBag.ServiceTitle = text;
                     if (checkbox == "5")
                     {
                         return View(dataManager.ServiceItems.GetServiceItemsByPrice(num1, num2, text));
@@ -44,6 +45,11 @@ namespace MyCompany.Controllers
                 default:
                     return View(dataManager.ServiceItems.GetServiceItems());
             }
+        }
+        public IActionResult Conparsion(string text)
+        {
+            ViewBag.TextField = dataManager.TextFields.GetTextFieldByCodeWord("PageServices");
+            return View("Conparsion", dataManager.ServiceItems.GetServiceItemsByTitle(text));
         }
     }
 }

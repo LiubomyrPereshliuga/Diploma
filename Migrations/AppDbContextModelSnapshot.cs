@@ -49,7 +49,7 @@ namespace KursovaProject.Migrations
                         new
                         {
                             Id = "44546e06-8719-4ad8-b88a-f271ae9d6eab",
-                            ConcurrencyStamp = "cac1df0c-a6d3-49a0-b4ea-fb6d80da3aa2",
+                            ConcurrencyStamp = "a9516054-afe8-4c10-a3c5-684b4977559f",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,13 +148,13 @@ namespace KursovaProject.Migrations
                         {
                             Id = "3b62472e-4f66-49fa-a20f-e7685b9565d8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dc77bac7-3fe6-4e88-953e-7e33a7d8489f",
+                            ConcurrencyStamp = "bb546cc6-440c-489d-bf8d-c186dc681874",
                             Email = "my@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MY@EMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOqICak01iyk6s05C6VL+dzBksZj7WESKWrA/cM4hURqW56bO18BUqtFgI+DwWMJYg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDHl92LFY9OJBo13nfIxuE1IHvkgFpRUQcL7TtJ2qr3bTqhgAjzvzap7am+55SnQIA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -258,9 +258,6 @@ namespace KursovaProject.Migrations
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("MetaDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -280,8 +277,11 @@ namespace KursovaProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TitleImagePath")
+                    b.Property<string>("TitleImage")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("TitleImagePath")
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("Id");
 
@@ -301,7 +301,7 @@ namespace KursovaProject.Migrations
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Maker")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MetaDescription")
@@ -313,9 +313,8 @@ namespace KursovaProject.Migrations
                     b.Property<string>("MetaTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Price")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.Property<string>("ShopItem")
                         .IsRequired()
@@ -331,7 +330,13 @@ namespace KursovaProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TitleImagePath")
+                    b.Property<string>("TitleImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("TitleImagePath")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("URL")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -351,9 +356,6 @@ namespace KursovaProject.Migrations
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("MetaDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -373,7 +375,13 @@ namespace KursovaProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TitleImagePath")
+                    b.Property<string>("TitleImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("TitleImagePath")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("URL")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -394,9 +402,6 @@ namespace KursovaProject.Migrations
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("MetaDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -406,16 +411,10 @@ namespace KursovaProject.Migrations
                     b.Property<string>("MetaTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Subtitle")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TitleImagePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -427,7 +426,7 @@ namespace KursovaProject.Migrations
                         {
                             Id = new Guid("63dc8fa6-07ae-4391-8916-e057f71239ce"),
                             CodeWord = "PageIndex",
-                            DateAdded = new DateTime(2023, 5, 2, 14, 4, 17, 413, DateTimeKind.Utc).AddTicks(2356),
+                            DateAdded = new DateTime(2023, 6, 3, 7, 1, 17, 718, DateTimeKind.Utc).AddTicks(4679),
                             Text = "Все заповнюється адміном",
                             Title = "Головна"
                         },
@@ -435,7 +434,7 @@ namespace KursovaProject.Migrations
                         {
                             Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a277f"),
                             CodeWord = "PageServices",
-                            DateAdded = new DateTime(2023, 5, 2, 14, 4, 17, 413, DateTimeKind.Utc).AddTicks(5287),
+                            DateAdded = new DateTime(2023, 6, 3, 7, 1, 17, 719, DateTimeKind.Utc).AddTicks(3922),
                             Text = "Все заповнюється адміном",
                             Title = "Каталог"
                         },
@@ -443,7 +442,7 @@ namespace KursovaProject.Migrations
                         {
                             Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a278b"),
                             CodeWord = "PageCategoryItems",
-                            DateAdded = new DateTime(2023, 5, 2, 14, 4, 17, 413, DateTimeKind.Utc).AddTicks(5402),
+                            DateAdded = new DateTime(2023, 6, 3, 7, 1, 17, 719, DateTimeKind.Utc).AddTicks(4134),
                             Text = "Все заповнюється адміном",
                             Title = "Категорії"
                         },
@@ -451,7 +450,7 @@ namespace KursovaProject.Migrations
                         {
                             Id = new Guid("4aa76a4c-c59d-409a-84c1-06e6487a137a"),
                             CodeWord = "PageContacts",
-                            DateAdded = new DateTime(2023, 5, 2, 14, 4, 17, 413, DateTimeKind.Utc).AddTicks(5446),
+                            DateAdded = new DateTime(2023, 6, 3, 7, 1, 17, 719, DateTimeKind.Utc).AddTicks(4184),
                             Text = "Все заповнюється адміном",
                             Title = "Контакти"
                         });

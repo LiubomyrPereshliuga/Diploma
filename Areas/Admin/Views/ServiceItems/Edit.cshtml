@@ -2,6 +2,16 @@
 @{
     string strTitle = "Редагувати";
     ViewBag.Title = strTitle;
+    string imageDataURL;
+    if (Model.TitleImagePath != null)
+    {
+        string imageBase64Data =
+    Convert.ToBase64String(Model.TitleImagePath);
+        imageDataURL =
+    string.Format("data:image/jpg;base64,{0}",
+    imageBase64Data);
+    }
+    else imageDataURL = null;
 }
 
 <script src="~/js/ckeditor/ckeditor.js"></script>
@@ -35,10 +45,10 @@
                 <span asp-validation-for="ShopItem"></span>
             </div>
             <div class="div-box">
-                <label asp-for="TitleImagePath"></label>
+                <label asp-for="TitleImage"></label>
                 <input type="file" name="titleImageFile" id="titleImageFile" accept="image/*" />
                 <div class="div-card">
-                    <img class="img-block" src="~/images/@Model.TitleImagePath"/>
+                    <img class="img-block" src="@imageDataURL"/>
                 </div>
             </div>
             <div class="div-box">

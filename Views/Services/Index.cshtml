@@ -59,10 +59,14 @@
         <ul class="big-image-list flex-ul">
             @foreach (ServiceItem entity in Model)
             {
+                string imageBase64DataService = Convert.ToBase64String(entity.TitleImagePath);
+                string imageDataURLService =
+                string.Format("data:image/jpg;base64,{0}",
+                imageBase64DataService);
                 <li class="li-card">
                     <div class="div-card">
                     <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                        <img src="~/images/@entity.TitleImagePath" alt="" class="left"/>
+                        <img src="@imageDataURLService" alt="" class="left"/>
                     </a>
                     </div>
                     <h4 class="center">@entity.Title</h4>

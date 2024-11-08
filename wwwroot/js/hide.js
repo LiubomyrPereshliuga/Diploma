@@ -5,6 +5,8 @@ window.onload = function () {
     slideTwo();
     inputOne();
     inputTwo();
+    document.getElementById("range1") = null;
+    document.getElementById("range2") = null;
 }
 
 function show1() {

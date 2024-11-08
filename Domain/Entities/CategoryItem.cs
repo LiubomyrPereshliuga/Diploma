@@ -10,8 +10,9 @@ namespace MyCompany.Domain.Entities
         [Display(Name = "Категорія")]
         public override string Title { get; set; } = "Категорія";
         [Display(Name = "Опис категорії")]
-        public override string Description { get; set; } = "Опис категорії";
+        public string Subtitle { get; set; } = "Опис категорії";
         [Display(Name = "Зображення категорії")]
-        public override string TitleImagePath { get; set; }
+        public string TitleImage { get; set; }
+        public byte[] TitleImagePath { get; set; }
     }
 }

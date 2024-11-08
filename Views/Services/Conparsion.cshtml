@@ -8,7 +8,7 @@
 }
 <form asp-action="Find" method="get">
     <h2 class="mb1">Пошук:</h2>
-    <input type="text" name="text" class="form-control mb1"/>
+    <input type="text" name="text" class="form-control mb1" />
     <div id="div1" style="display: none">
         <div class="swrapper">
             <div class="svalues">
@@ -50,33 +50,32 @@
 </form>
 <article>
     <header class="major">
-        <h2 class="center">Каталог товарів</h2>
+        <h2 class="center">Порівняння товарів</h2>
     </header>
 </article>
 <div>
     @if (Model.Any())
     {
-        <ul class="big-image-list flex-ul">
-            @foreach (ServiceItem entity in Model)
-            {
-                string imageBase64DataService = Convert.ToBase64String(entity.TitleImagePath);
-                string imageDataURLService =
-                string.Format("data:image/jpg;base64,{0}",
-                imageBase64DataService);
-                <li class="li-card">
-                    <div class="div-card">
+    <ul class="big-image-list flex-ul" style="justify-content: center">
+        @foreach (ServiceItem entity in Model)
+        {
+            string imageBase64DataService = Convert.ToBase64String(entity.TitleImagePath);
+            string imageDataURLService =
+            string.Format("data:image/jpg;base64,{0}",
+            imageBase64DataService);
+            <li class="li-card">
+                <div class="div-card">
                     <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                        <img src="@imageDataURLService" alt="" class="left"/>
+                        <img src="@imageDataURLService" alt="" class="left" />
                     </a>
-                    </div>
-                    <h4 class="center">@entity.Title</h4>
-                    <p>Магазин з цим товаром: @entity.ShopItem</p>
-                    <p>Категорія: @entity.CategoryItem</p>
-                    <p>Короткий опис: @entity.Subtitle</p>
-                    <p>Ціна: @entity.Price грн</p>
-                </li>
-            }
-        </ul>
+                </div>
+                <h4 class="center">@entity.Title</h4>
+                <p>Магазин: @entity.ShopItem</p>
+                <p>Категорія: @entity.CategoryItem</p>
+                <p>Короткий опис: @entity.Subtitle</p>
+                <p>Ціна: @entity.Price грн</p>
+            </li>
+        }
+    </ul>
     }
-    else {<h4>За вашим запитом нічого не знайдено</h4>} 
 </div>

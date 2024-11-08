@@ -4,6 +4,8 @@
     ViewBag.Title = Model.category.MetaTitle;
     ViewBag.Description = Model.category.MetaDescription;
     ViewBag.Keywords = Model.category.MetaKeywords;
+    string imageBase64Data = Convert.ToBase64String(Model.category.TitleImagePath);
+    string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
 }
 
 <div class="mb2">
@@ -11,7 +13,7 @@
         @Model.category.Title
     </h2>
     <div class="div-img">
-        <img class="img-block" src="~/images/@Model.category.TitleImagePath" style="height: 100%; max-width:100%"/>
+        <img class="img-block" src="@imageDataURL" style="height: 100%; max-width:100%"/>
     </div>
 </div>
 <h2 class="center">Товари в даній категорії:</h2>
@@ -21,12 +23,16 @@
         <ul class="big-image-list flex-ul">
             @foreach (ServiceItem entity in Model.services)
             {
+                string imageBase64DataService = Convert.ToBase64String(entity.TitleImagePath);
+                string imageDataURLService =
+                string.Format("data:image/jpg;base64,{0}",
+                imageBase64DataService);
                 @if (entity.CategoryItem == Model.category.Title)
                  {
                 <li class="li-card">
                     <div class="div-card">
                     <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                        <img src="~/images/@entity.TitleImagePath" alt="" class="left"/>
+                        <img src="@imageDataURLService" alt="" class="left"/>
                     </a>
                         </div>
                     <h4>@entity.Title</h4>
